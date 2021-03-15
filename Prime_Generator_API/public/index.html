@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Generator</title>
+</head>
+<body>
+    <h1>Prime Generator</h1>
+    <input type="number" name="start" id="start">
+    <input type="number" name="end" id="end">
+    <input type="button" id="submit" value="Submit">
+    <div id="result" style="word-wrap:normal">
+    </div>
+    
+</body>
+
+<script>
+    $("#submit").click(()=>{
+        var start=$('#start').val();
+        var end=$('#end').val();
+        console.log(start,end);
+        $.get("/api/",{"start":start,"end":end},(data)=>{
+            $('#result').text(data);
+        });
+    });
+</script>
+</html>
